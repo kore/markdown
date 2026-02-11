@@ -375,12 +375,13 @@
       <span class="export-sep"></span>
       <button class="export-btn" id="btn-pdf" title="Export as PDF">PDF</button>
       <button class="export-btn" id="btn-docx" title="Export as Word">Word</button>
+      <span class="export-sep"></span>
+      <div class="toggle-group" role="radiogroup" aria-label="Editor mode">
+        <button class="toggle-btn" id="btn-edit" aria-pressed="true" role="radio">Edit</button>
+        <button class="toggle-btn" id="btn-view" aria-pressed="false" role="radio">View</button>
+      </div>
     </div>
     <input type="file" id="file-input" accept=".md,.markdown,.txt" hidden>
-    <div class="toggle-group" role="radiogroup" aria-label="Editor mode">
-      <button class="toggle-btn" id="btn-edit" aria-pressed="true" role="radio">Edit</button>
-      <button class="toggle-btn" id="btn-view" aria-pressed="false" role="radio">View</button>
-    </div>
   </div>
 </header>
 
