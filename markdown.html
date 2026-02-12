@@ -555,7 +555,7 @@ Just enter some markdown text…</textarea>
     themeSelect.value = theme || '';
   }
 
-  applyTheme(localStorage.getItem(THEME_KEY) || '');
+  applyTheme(localStorage.getItem(THEME_KEY) ?? 'kore');
 
   themeSelect.addEventListener('change', () => {
     const theme = themeSelect.value;
