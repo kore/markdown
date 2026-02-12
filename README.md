@@ -2,6 +2,8 @@
 
 A single-file, fully self-contained Markdown editor and viewer. Just open `markdown.html` in a browser — no build step, no server, no installation.
 
+Deployed at https://k023.de/markdown.html
+
 ## Features
 
 - **Live editing** with GitHub Flavored Markdown support (tables, checklists, fenced code blocks)
