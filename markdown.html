@@ -44,6 +44,20 @@
     --color-text-muted:    #5a6370;
     --color-border:        #d0d5db;
 
+    /* Code blocks */
+    --color-pre-bg:        #1e2736;
+    --color-pre-text:      #d4dae3;
+    --color-pre-border:    var(--color-accent);
+    --color-blockquote-bg: rgba(200, 79, 14, 0.04);
+
+    /* highlight.js tokens */
+    --hljs-keyword:   #7fbfff;
+    --hljs-string:    #a8d4a2;
+    --hljs-comment:   #6a7585;
+    --hljs-variable:  #e0c589;
+    --hljs-number:    #d4a0e0;
+    --hljs-title:     #7fbfff;
+
     /* Toggle */
     --toggle-active-bg:    var(--fuh-blue);
     --toggle-inactive-bg:  #e2e6ea;
@@ -53,6 +67,76 @@
     /* Layout */
     --content-max-width:   52rem;
     --spacing-page:        2.5rem;
+  }
+
+  /* ── Kore (light) theme ──────────────────────────── */
+  [data-theme="kore"] {
+    --color-primary:       #748e63;
+    --color-accent:        #5a7a4a;
+    --color-heading:       #4a6a3a;
+    --color-link:          #5a7a4a;
+    --color-link-hover:    #3d5c2e;
+    --color-code-bg:       #f0eee6;
+    --color-code-border:   #d6d2c4;
+    --color-table-header:  #748e63;
+    --color-table-stripe:  #f4f2ea;
+    --color-hr:            #748e63;
+    --color-blockquote:    #a08050;
+    --color-blockquote-bg: rgba(160, 128, 80, 0.06);
+
+    --color-bg:            #fdfcf6;
+    --color-surface:       #f6f4ee;
+    --color-text:          #141811;
+    --color-text-muted:    #5a5e52;
+    --color-border:        #d0cdc2;
+
+    --color-pre-bg:        #2a2e24;
+    --color-pre-text:      #d4d8c8;
+    --color-pre-border:    #748e63;
+
+    --hljs-keyword:   #8cc4a0;
+    --hljs-string:    #b8cc8a;
+    --hljs-comment:   #6a7562;
+    --hljs-variable:  #d4c48a;
+    --hljs-number:    #c4a0d4;
+    --hljs-title:     #8cc4a0;
+
+    --toggle-active-bg:    #748e63;
+  }
+
+  /* ── Kore Dark theme ─────────────────────────────── */
+  [data-theme="kore-dark"] {
+    --color-primary:       #748e63;
+    --color-accent:        #8aaa76;
+    --color-heading:       #a0be8c;
+    --color-link:          #8aaa76;
+    --color-link-hover:    #b0d09a;
+    --color-code-bg:       #282e22;
+    --color-code-border:   #3a4232;
+    --color-table-header:  #4a6040;
+    --color-table-stripe:  #1e2418;
+    --color-hr:            #748e63;
+    --color-blockquote:    #a08050;
+    --color-blockquote-bg: rgba(160, 128, 80, 0.08);
+
+    --color-bg:            #1a1e16;
+    --color-surface:       #22271d;
+    --color-text:          #d8d8d0;
+    --color-text-muted:    #9a9e90;
+    --color-border:        #3a4032;
+
+    --color-pre-bg:        #141810;
+    --color-pre-text:      #d0d4c4;
+    --color-pre-border:    #748e63;
+
+    --hljs-keyword:   #8cc4a0;
+    --hljs-string:    #b8cc8a;
+    --hljs-comment:   #6a7562;
+    --hljs-variable:  #d4c48a;
+    --hljs-number:    #c4a0d4;
+    --hljs-title:     #8cc4a0;
+
+    --toggle-active-bg:    #748e63;
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -174,6 +258,44 @@
     color: #fff;
   }
 
+  /* ── Theme selector ───────────────────────────────── */
+  .theme-selector {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 4px;
+    padding: 0.25rem 0.5rem;
+    transition: all 0.15s ease;
+  }
+
+  .theme-selector:hover {
+    background: rgba(255,255,255,.15);
+    border-color: rgba(255,255,255,.5);
+  }
+
+  .theme-selector .bi-palette {
+    font-size: 1rem;
+    color: rgba(255,255,255,.8);
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .theme-selector:hover .bi-palette {
+    color: #fff;
+  }
+
+  .theme-select {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    font-size: 0.78rem;
+  }
+
   /* ── Main layout ────────────────────────────────────── */
   .main {
     flex: 1;
@@ -265,7 +387,7 @@
     margin: 1.2em 0;
     padding: 0.6em 1.2em;
     border-left: 3px solid var(--color-blockquote);
-    background: rgba(200, 79, 14, 0.04);
+    background: var(--color-blockquote-bg);
     color: var(--color-text);
   }
   #viewer blockquote p { margin: 0.3em 0; }
@@ -301,30 +423,30 @@
   #viewer pre {
     margin: 1.2em 0;
     padding: 1em 1.2em;
-    background: #1e2736;
+    background: var(--color-pre-bg);
     border-radius: 4px;
     overflow-x: auto;
-    border-left: 3px solid var(--color-accent);
+    border-left: 3px solid var(--color-pre-border);
   }
 
   #viewer pre code {
     background: none;
     border: none;
     padding: 0;
-    color: #d4dae3;
+    color: var(--color-pre-text);
     font-size: 0.82rem;
     line-height: 1.6;
   }
 
   /* highlight.js overrides for dark code blocks */
   #viewer pre .hljs-keyword,
-  #viewer pre .hljs-built_in  { color: #7fbfff; }
-  #viewer pre .hljs-string    { color: #a8d4a2; }
-  #viewer pre .hljs-comment   { color: #6a7585; font-style: italic; }
+  #viewer pre .hljs-built_in  { color: var(--hljs-keyword); }
+  #viewer pre .hljs-string    { color: var(--hljs-string); }
+  #viewer pre .hljs-comment   { color: var(--hljs-comment); font-style: italic; }
   #viewer pre .hljs-variable,
-  #viewer pre .hljs-attr       { color: #e0c589; }
-  #viewer pre .hljs-number    { color: #d4a0e0; }
-  #viewer pre .hljs-title     { color: #7fbfff; }
+  #viewer pre .hljs-attr       { color: var(--hljs-variable); }
+  #viewer pre .hljs-number    { color: var(--hljs-number); }
+  #viewer pre .hljs-title     { color: var(--hljs-title); }
 
   /* ── Tables ─────────────────────────────────────────── */
   #viewer table {
@@ -364,6 +486,7 @@
     .header { position: static; background: #fff; color: var(--color-primary); box-shadow: none; border-bottom: 2px solid var(--color-primary); }
     .toggle-group { display: none; }
     .export-group { display: none; }
+    .theme-selector { display: none; }
     .editor-pane { display: none !important; }
     .viewer-pane { display: block !important; }
     #viewer pre { border-left-color: var(--color-accent); }
@@ -382,6 +505,14 @@
       <button class="export-btn" id="btn-pdf" title="Export as PDF"><i class="bi bi-filetype-pdf"></i></button>
       <button class="export-btn" id="btn-docx" title="Export as Word"><i class="bi bi-filetype-doc"></i></button>
       <span class="export-sep"></span>
+      <div class="theme-selector">
+        <i class="bi bi-palette"></i>
+        <select class="theme-select" id="theme-select" title="Select theme">
+          <option value="">FernUni Hagen</option>
+          <option value="kore">Kore</option>
+          <option value="kore-dark">Kore Dark</option>
+        </select>
+      </div>
       <div class="toggle-group" role="radiogroup" aria-label="Editor mode">
         <button class="toggle-btn" id="btn-edit" aria-pressed="true" role="radio"><i class="bi bi-pencil"></i></button>
         <button class="toggle-btn" id="btn-view" aria-pressed="false" role="radio"><i class="bi bi-eye"></i></button>
@@ -410,6 +541,27 @@ Just enter some markdown text…</textarea>
   const paneView = document.getElementById('pane-view');
   const btnEdit  = document.getElementById('btn-edit');
   const btnView  = document.getElementById('btn-view');
+
+  /* ── Theme switching ───────────────────────────── */
+  const themeSelect = document.getElementById('theme-select');
+  const THEME_KEY = 'md-viewer-theme';
+
+  function applyTheme(theme) {
+    if (theme) {
+      document.documentElement.dataset.theme = theme;
+    } else {
+      delete document.documentElement.dataset.theme;
+    }
+    themeSelect.value = theme || '';
+  }
+
+  applyTheme(localStorage.getItem(THEME_KEY) || '');
+
+  themeSelect.addEventListener('change', () => {
+    const theme = themeSelect.value;
+    applyTheme(theme);
+    localStorage.setItem(THEME_KEY, theme);
+  });
 
   /* ── marked.js configuration ─────────────────────── */
   marked.setOptions({
@@ -573,24 +725,28 @@ Just enter some markdown text…</textarea>
     btnDocx.disabled = true;
     ensureRendered();
 
+    // Read current theme colors from computed CSS variables
+    const cs = getComputedStyle(document.documentElement);
+    const v = (name) => cs.getPropertyValue(name).trim();
+
     // Build a self-contained HTML document with inline styles for Word
     const styles = `
       <style>
-        body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: #1a1a1a; }
-        h1 { font-size: 20pt; color: #004C97; border-bottom: 2pt solid #004C97; padding-bottom: 4pt; }
-        h2 { font-size: 16pt; color: #004C97; border-bottom: 1pt solid #d0d5db; padding-bottom: 3pt; }
-        h3 { font-size: 13pt; color: #004C97; }
-        h4 { font-size: 11pt; color: #5a6370; }
-        a { color: #006666; }
-        code { font-family: Consolas, "Courier New", monospace; font-size: 10pt; background: #f4f6f8; padding: 1pt 3pt; }
-        pre { background: #f4f6f8; border-left: 3pt solid #006666; padding: 8pt 12pt; font-size: 9pt; }
+        body { font-family: Calibri, Arial, sans-serif; font-size: 11pt; line-height: 1.5; color: ${v('--color-text')}; }
+        h1 { font-size: 20pt; color: ${v('--color-heading')}; border-bottom: 2pt solid ${v('--color-hr')}; padding-bottom: 4pt; }
+        h2 { font-size: 16pt; color: ${v('--color-heading')}; border-bottom: 1pt solid ${v('--color-border')}; padding-bottom: 3pt; }
+        h3 { font-size: 13pt; color: ${v('--color-heading')}; }
+        h4 { font-size: 11pt; color: ${v('--color-text-muted')}; }
+        a { color: ${v('--color-link')}; }
+        code { font-family: Consolas, "Courier New", monospace; font-size: 10pt; background: ${v('--color-code-bg')}; padding: 1pt 3pt; }
+        pre { background: ${v('--color-code-bg')}; border-left: 3pt solid ${v('--color-accent')}; padding: 8pt 12pt; font-size: 9pt; }
         pre code { background: none; padding: 0; }
-        blockquote { border-left: 3pt solid #C84F0E; padding-left: 12pt; color: #1a1a1a; margin: 8pt 0; }
+        blockquote { border-left: 3pt solid ${v('--color-blockquote')}; padding-left: 12pt; color: ${v('--color-text')}; margin: 8pt 0; }
         table { border-collapse: collapse; width: 100%; margin: 8pt 0; }
-        th { background: #004C97; color: white; padding: 5pt 8pt; text-align: left; font-weight: bold; }
-        td { padding: 5pt 8pt; border-bottom: 1pt solid #d0d5db; }
-        tr:nth-child(even) td { background: #f0f4f8; }
-        hr { border: none; border-top: 1pt solid #004C97; }
+        th { background: ${v('--color-table-header')}; color: white; padding: 5pt 8pt; text-align: left; font-weight: bold; }
+        td { padding: 5pt 8pt; border-bottom: 1pt solid ${v('--color-border')}; }
+        tr:nth-child(even) td { background: ${v('--color-table-stripe')}; }
+        hr { border: none; border-top: 1pt solid ${v('--color-hr')}; }
       </style>
     `;
 
