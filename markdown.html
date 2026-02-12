@@ -10,6 +10,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/bash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/yaml.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/dockerfile.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
 
@@ -106,13 +107,15 @@
     border: 1px solid rgba(255,255,255,.3);
     background: transparent;
     color: rgba(255,255,255,.8);
-    font: inherit;
-    font-size: 0.78rem;
-    font-weight: 600;
-    padding: 0.25rem 0.7rem;
+    font-size: 1rem;
+    padding: 0.25rem 0.5rem;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.15s ease;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .export-btn:hover {
@@ -150,13 +153,15 @@
     border: none;
     background: transparent;
     color: rgba(255,255,255,.7);
-    font: inherit;
-    font-size: 0.82rem;
-    font-weight: 600;
-    padding: 0.3rem 0.9rem;
+    font-size: 1rem;
+    padding: 0.3rem 0.6rem;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.15s ease;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .toggle-btn[aria-pressed="true"] {
@@ -371,15 +376,15 @@
   <span class="header-title">Kore's Markdown Viewer</span>
   <div class="header-actions">
     <div class="export-group">
-      <button class="export-btn" id="btn-upload" title="Open .md file">Open</button>
-      <button class="export-btn" id="btn-save" title="Save as .md">Save</button>
+      <button class="export-btn" id="btn-upload" title="Open .md file"><i class="bi bi-folder2-open"></i></button>
+      <button class="export-btn" id="btn-save" title="Save as .md"><i class="bi bi-floppy"></i></button>
       <span class="export-sep"></span>
-      <button class="export-btn" id="btn-pdf" title="Export as PDF">PDF</button>
-      <button class="export-btn" id="btn-docx" title="Export as Word">Word</button>
+      <button class="export-btn" id="btn-pdf" title="Export as PDF"><i class="bi bi-filetype-pdf"></i></button>
+      <button class="export-btn" id="btn-docx" title="Export as Word"><i class="bi bi-filetype-doc"></i></button>
       <span class="export-sep"></span>
       <div class="toggle-group" role="radiogroup" aria-label="Editor mode">
-        <button class="toggle-btn" id="btn-edit" aria-pressed="true" role="radio">Edit</button>
-        <button class="toggle-btn" id="btn-view" aria-pressed="false" role="radio">View</button>
+        <button class="toggle-btn" id="btn-edit" aria-pressed="true" role="radio"><i class="bi bi-pencil"></i></button>
+        <button class="toggle-btn" id="btn-view" aria-pressed="false" role="radio"><i class="bi bi-eye"></i></button>
       </div>
     </div>
     <input type="file" id="file-input" accept=".md,.markdown,.txt" hidden>
@@ -540,7 +545,6 @@ Just enter some markdown text…</textarea>
   /* ── PDF export via html2pdf.js ────────────────── */
   btnPdf.addEventListener('click', async () => {
     btnPdf.disabled = true;
-    btnPdf.textContent = '…';
     ensureRendered();
 
     // Clone viewer so we can style it for export without affecting the page
@@ -562,13 +566,11 @@ Just enter some markdown text…</textarea>
     }
 
     btnPdf.disabled = false;
-    btnPdf.textContent = 'PDF';
   });
 
   /* ── Word export via HTML-to-docx conversion ───── */
   btnDocx.addEventListener('click', () => {
     btnDocx.disabled = true;
-    btnDocx.textContent = '…';
     ensureRendered();
 
     // Build a self-contained HTML document with inline styles for Word
@@ -615,7 +617,6 @@ Just enter some markdown text…</textarea>
     saveAs(blob, getFilename() + '.doc');
 
     btnDocx.disabled = false;
-    btnDocx.textContent = 'Word';
   });
 })();
 </script>
